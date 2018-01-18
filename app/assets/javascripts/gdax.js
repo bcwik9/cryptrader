@@ -39,6 +39,15 @@ Gdax = function() {
           btc_price_placeholder.text("$" + data['price'])
         }
       };
+
+      ws.onclose = function(){ 
+        // websocket is closed.
+        console("Connection to gdax closed..."); 
+      };
+        
+      window.onbeforeunload = function(event) {
+        socket.close();
+      };
     }
   }
 
