@@ -26,6 +26,7 @@ Gdax = function() {
               }
           ]
       }
+      var last_price = 0.0
 
       ws.onopen = function() {
         console.log("websocket opened. sending message")
@@ -38,6 +39,12 @@ Gdax = function() {
         data = JSON.parse(event.data)
         if(data['type'] == 'ticker'){
           btc_price_placeholder.text("$" + data['price'])
+          if(data['price'] >= last_price){
+            btc_price_placeholder.css('color', 'green')
+          } else {
+            btc_price_placeholder.css('color', 'red')
+          }
+          last_price = data['price']
         }
       };
 
