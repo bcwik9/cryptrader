@@ -3,6 +3,7 @@ Gdax = function() {
   var btc_price_placeholder = $("#btc-price")
 
   var init = function() {
+    init_graph()
     console.log("attempting to connect to Gdax...")
     if ("WebSocket" in window){
       console.log("WebSocket is supported");
@@ -49,6 +50,29 @@ Gdax = function() {
         socket.close();
       };
     }
+  }
+
+  var init_graph = function() {
+    // see https://plot.ly/javascript/box-plots/
+    var y0=[],y1=[];
+    for (var i = 0; i < 50; i ++) {
+        y0[i] = Math.random();
+        y1[i] = Math.random() + 1;
+    }
+
+    var trace1 = {
+        y: y0,
+        type: 'box'
+    };
+
+    var trace2 = {
+        y: y1,
+        type: 'box'
+    };
+
+    var data = [trace1, trace2];
+
+    Plotly.newPlot('btc-graph', data);
   }
 
   init()
