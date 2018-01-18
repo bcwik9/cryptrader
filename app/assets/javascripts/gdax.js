@@ -50,7 +50,7 @@ Gdax = function() {
 
       ws.onclose = function(){ 
         // websocket is closed.
-        console("Connection to gdax closed..."); 
+        console.log("Connection to gdax closed..."); 
       };
         
       window.onbeforeunload = function(event) {
