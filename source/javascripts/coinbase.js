@@ -1,4 +1,4 @@
-Gdax = function() {
+Coinbase = function() {
 
   var btc_price_placeholder = $("#btc-price")
 
