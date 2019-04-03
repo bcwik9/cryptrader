@@ -38,10 +38,11 @@ Coinbase = function() {
         price_placeholder = price_list.find("#" + data['product_id'])
         console.log(price_list)
         console.log(price_placeholder)
-        if(!price_placeholder){
-          price_list.append('<div id="' + data['product_id'] + '"></div>')
-        }
         if(data['type'] == 'ticker'){
+          if(!price_placeholder.length){
+            console.log("appending")
+            price_list.append('<div id="' + data['product_id'] + '"></div>')
+          }
           price_placeholder.text(data['product_id'] + " $" + data['price'])
           if(data['price'] >= last_price){
             price_placeholder.css('color', 'green')
