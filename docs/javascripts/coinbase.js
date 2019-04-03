@@ -7,20 +7,16 @@ Coinbase = function() {
     if ("WebSocket" in window){
       console.log("WebSocket is supported");
       var ws = new WebSocket("wss://ws-feed.pro.coinbase.com");
-
+      var cryptos = ['BTC-USD', 'ETH-USD']
       var options = {
           "type": "subscribe",
-          "product_ids": [
-              "BTC-USD"
-          ],
+          "product_ids": cryptos,
           "channels": [
               "level2",
               "heartbeat",
               {
                   "name": "ticker",
-                  "product_ids": [
-                      "BTC-USD"
-                  ]
+                  "product_ids": cryptos
               }
           ]
       }
@@ -36,12 +32,9 @@ Coinbase = function() {
         console.log("Message is received: ", msg);
         data = JSON.parse(event.data)
         price_placeholder = price_list.find("#" + data['product_id'])
-        console.log(price_list)
-        console.log(price_placeholder)
         if(data['type'] == 'ticker'){
           if(!price_placeholder.length){
-            console.log("appending")
-            price_list.append('<div id="' + data['product_id'] + '"></div>')
+            price_list.append('<div id="' + data['product_id'] + '"></div><br>')
           }
           price_placeholder.text(data['product_id'] + " $" + data['price'])
           if(data['price'] >= last_price){
