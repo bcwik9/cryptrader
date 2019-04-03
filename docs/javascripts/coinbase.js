@@ -3,10 +3,10 @@ Coinbase = function() {
   var btc_price_placeholder = $("#btc-price")
 
   var init = function() {
-    console.log("attempting to connect to Gdax...")
+    console.log("attempting to connect to Coinbase...")
     if ("WebSocket" in window){
       console.log("WebSocket is supported");
-      var ws = new WebSocket("wss://ws-feed-public.sandbox.pro.coinbase.com");
+      var ws = new WebSocket("wss://ws-feed.pro.coinbase.com");
 
       var options = {
           "type": "subscribe",
@@ -48,7 +48,7 @@ Coinbase = function() {
 
       ws.onclose = function(){ 
         // websocket is closed.
-        console.log("Connection to gdax closed..."); 
+        console.log("Connection to Coinbase closed..."); 
       };
         
       window.onbeforeunload = function(event) {

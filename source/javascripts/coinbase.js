@@ -6,7 +6,7 @@ Coinbase = function() {
     console.log("attempting to connect to Coinbase...")
     if ("WebSocket" in window){
       console.log("WebSocket is supported");
-      var ws = new WebSocket("wss://ws-feed-public.sandbox.pro.coinbase.com");
+      var ws = new WebSocket("wss://ws-feed.pro.coinbase.com");
 
       var options = {
           "type": "subscribe",
