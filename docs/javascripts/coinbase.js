@@ -32,13 +32,13 @@ Coinbase = function() {
       }
 
       ws.onmessage = function (event){ 
+        var msg = event.data;
+        console.log("Message is received: ", msg);
+        data = JSON.parse(event.data)
         price_placeholder = price_list.find("#" + data['product_id'])
         if(!price_placeholder){
           price_list.append('<div id="' + data['product_id'] + '"></div>')
         }
-        var msg = event.data;
-        console.log("Message is received: ", msg);
-        data = JSON.parse(event.data)
         if(data['type'] == 'ticker'){
           price_placeholder.text(data['product_id'] + " $" + data['price'])
           if(data['price'] >= last_price){
