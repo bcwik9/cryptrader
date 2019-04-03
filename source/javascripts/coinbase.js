@@ -7,7 +7,7 @@ Coinbase = function() {
     if ("WebSocket" in window){
       console.log("WebSocket is supported");
       var ws = new WebSocket("wss://ws-feed.pro.coinbase.com");
-      var cryptos = ['BTC-USD', 'ETH-USD']
+      var cryptos = ['BTC-USD', 'ETH-USD', 'LTC-USD']
       var options = {
           "type": "subscribe",
           "product_ids": cryptos,
