@@ -36,6 +36,8 @@ Coinbase = function() {
         console.log("Message is received: ", msg);
         data = JSON.parse(event.data)
         price_placeholder = price_list.find("#" + data['product_id'])
+        console.log(price_list)
+        console.log(price_placeholder)
         if(!price_placeholder){
           price_list.append('<div id="' + data['product_id'] + '"></div>')
         }
