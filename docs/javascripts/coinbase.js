@@ -36,7 +36,7 @@ Coinbase = function() {
           if(!price_placeholder.length){
             price_list.append('<div id="' + data['product_id'] + '"></div>')
           }
-          price_placeholder.text(data['product_id'] + " $" + data['price'])
+          price_placeholder.text(data['product_id'] + " $" + parseFloat(data['price']))
           if(data['price'] >= last_price){
             price_placeholder.css('color', 'green')
           } else {
