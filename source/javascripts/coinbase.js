@@ -1,6 +1,6 @@
 Coinbase = function() {
 
-  var btc_price_placeholder = $("#btc-price")
+  var price_list = $("#price-list")
 
   var init = function() {
     console.log("attempting to connect to Coinbase...")
@@ -32,15 +32,19 @@ Coinbase = function() {
       }
 
       ws.onmessage = function (event){ 
+        price_placeholder = price_list.find("#" + data['product_id'])
+        if(!price_placeholder){
+          price_list.append('<div id="' + data['product_id'] + '"></div>')
+        }
         var msg = event.data;
         console.log("Message is received: ", msg);
         data = JSON.parse(event.data)
         if(data['type'] == 'ticker'){
-          btc_price_placeholder.text("$" + data['price'])
+          price_placeholder.text(data['product_id'] + " $" + data['price'])
           if(data['price'] >= last_price){
-            btc_price_placeholder.css('color', 'green')
+            price_placeholder.css('color', 'green')
           } else {
-            btc_price_placeholder.css('color', 'red')
+            price_placeholder.css('color', 'red')
           }
           last_price = data['price']
         }
