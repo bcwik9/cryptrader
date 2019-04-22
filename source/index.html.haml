@@ -1,6 +1,4 @@
-%h1#price-list
+#coinbase-app
+  %coinbase-crypto{"v-for": "crypto in cryptos", ":crypto": "crypto", ":key": "crypto.id"}
 
-= javascript_include_tag "coinbase.js", relative: true
-
-:javascript
-  Coinbase();
+= javascript_include_tag "coinbase_vue.js", relative: true

@@ -7,16 +7,13 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Cryptrader</title>
-    <link href="/stylesheets/site.css" rel="stylesheet" />
-    <script src="/javascripts/site.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   </head>
   <body>
-    <h1 id='price-list'></h1>
-<script src="javascripts/coinbase.js"></script>
-<script>
-  Coinbase();
-</script>
+    <div id='coinbase-app'>
+<coinbase-crypto :crypto='crypto' :key='crypto.id' v-for='crypto in cryptos'></coinbase-crypto>
+</div>
+<script src="javascripts/coinbase_vue.js"></script>
 
   </body>
 </html>
